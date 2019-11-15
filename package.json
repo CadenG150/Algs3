@@ -1,0 +1,27 @@
+{
+  "name": "projectpack",
+  "version": "1.0.0",
+  "description": "Project Pack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CadenG150/ProjectPack.git"
+  },
+  "author": "Caden Grey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CadenG150/ProjectPack/issues"
+  },
+  "homepage": "https://github.com/CadenG150/ProjectPack#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.7.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "nodemon": "^1.19.4"
+  }
+}
