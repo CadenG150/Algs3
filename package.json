@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CadenG150/ProjectPack.git"
+    "url": "git+https://github.com/CadenG150/Algs3.git"
   },
   "author": "Caden Grey",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CadenG150/ProjectPack/issues"
+    "url": "https://github.com/CadenG150/Algs3/issues"
   },
-  "homepage": "https://github.com/CadenG150/ProjectPack#readme",
+  "homepage": "https://github.com/CadenG150/Algs3#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
