@@ -4,6 +4,7 @@ var path = require("path");
 const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 const session = require("express-session");
+const Cubid = require('cubid');
 
 /*var mysql = require("mysql");
 var con = mysql.createConnection({
@@ -12,6 +13,14 @@ var con = mysql.createConnection({
   password: "codepassword05",
   database: "eaglecare"
 });*/
+
+const yPerm1 = "F R U' R' U' R U R' F' R U R' U' R' F R F'"
+const yPerm2 = "F R' F R2 U' R' U' R U R' F' R U R' U' F'"
+
+const cube = new Cubid(yPerm1);
+const newCube = cube.apply(yPerm2);
+
+console.log(newCube.isSolved("all"));
 
 app.use(
   session({
@@ -29,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.get("/", function(req, res) {
-  res.render("3x3");
+  res.render("index");
 });
 
 app.get("/3x3", function(req, res) {
