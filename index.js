@@ -29,7 +29,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.get("/", function(req, res) {
-  res.render("index");
+  res.render("3x3");
+});
+
+app.get("/3x3", function(req, res) {
+  res.render("3x3");
+});
+
+app.get("/PLL", function(req, res) {
+  res.render("PLL");
 });
 
 var http = require("http");
