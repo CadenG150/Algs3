@@ -5,6 +5,7 @@
     <title>Alg&#x00B3 - 3x3  - PLL</title>
     <link rel="stylesheet" href="/css/style.css" type="text/css" >
 </head>
+
 <body>
     <h1>PLL</h1>
     <div id="alg-box">
@@ -17,7 +18,7 @@
             <tr>
               <td>Aa</td>
               <td><img src="images/Aa.png"></td>
-              <td>x R' U R' D2 R U' R' D2 R2</td>
+              <td id="Aa">Most popular algorithm: <%= algorithmTest %> </td>
             </tr>
             <tr>
                 <td>Ab</td>
@@ -37,89 +38,95 @@
               <tr>
                 <td>Ga</td>
                 <td><img src="images/Ga.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R2 U R' U R' U' R U' R2 D U' R' U R D'</td>
               </tr>
               <tr>
                 <td>Gb</td>
                 <td><img src="images/Gb.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R' U' R U D' R2 U R' U R U' R U' R2 D</td>
               </tr>
               <tr>
                 <td>Gc</td>
                 <td><img src="images/Gc.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R2 U' R U' R U R' U R2 D' U R U' R' D</td>
               </tr>
               <tr>
                 <td>Gd</td>
                 <td><img src="images/Gd.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R U R' U' D R2 U' R U' R' U R' U R2 D'</td>
               </tr>
               <tr>
                 <td>H</td>
                 <td><img src="images/H.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>M2 U' M2 U2 M2 U' M2</td>
               </tr>
               <tr>
                 <td>Ja</td>
                 <td><img src="images/Ja.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>L' U' L F L' U' L U L F' L2 U L</td>
               </tr>
               <tr>
                 <td>Jb</td>
                 <td><img src="images/Jb.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R U R' F' R U R' U' R' F R2 U' R'</td>
               </tr>
               <tr>
                 <td>Na</td>
                 <td><img src="images/Na.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R U R' U R U R' F' R U R' U' R' F R2 U' R' U2 R U' R'</td>
               </tr>
               <tr>
                 <td>Nb</td>
                 <td><img src="images/Nb.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>r' D' F r U' r' F' D r2 U r' U' r' F r F'</td>
               </tr>
               <tr>
                 <td>Ra</td>
                 <td><img src="images/Ra.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>y R U' R' U' R U R D R' U' R D' R' U2 R'</td>
               </tr>
               <tr>
                 <td>Rb</td>
                 <td><img src="images/Rb.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R' U2 R U2 R' F R U R' U' R' F' R2</td>
               </tr>
               <tr>
                 <td>T</td>
                 <td><img src="images/T.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R U R' U' R' F R2 U' R' U' R U R' F'</td>
               </tr>
               <tr>
                 <td>Ua</td>
                 <td><img src="images/Ua.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>M2 U M' U2 M U M2</td>
               </tr>
               <tr>
                 <td>Ub</td>
                 <td><img src="images/Ub.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>M2 U' M' U2 M U' M2</td>
               </tr>
               <tr>
                 <td>V</td>
                 <td><img src="images/V.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>R' U R' d' R' F' R2 U' R' U R' F R F</td>
               </tr>
               <tr>
                 <td>Y</td>
                 <td><img src="images/Y.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>F R U' R' U' R U R' F' R U R' U' R' F R F'</td>
               </tr>
               <tr>
                 <td>Z</td>
                 <td><img src="images/Z.png"></td>
-                <td>x R' U R' D2 R U' R' D2 R2</td>
+                <td>M2 U M2 U M' U2 M2 U2 M'</td>
               </tr>
           </table>
     </div>
 </body>
+<script>
+  var algorithmTest = "<%= algorithmTest %>";
+  var rows =<%-JSON.stringify(algorithmTest)%>
+  console.log(rows[0].algorithm)
+  document.getElementById('Aa').innerHTML = rows[0].algorithm;
+</script>
 </html>
