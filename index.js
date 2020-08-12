@@ -40,14 +40,19 @@ app.get("/3x3", function(req, res) {
 });
 
 app.get("/PLL", function(req, res) {
-  var sql = "SELECT algorithm FROM algorithms WHERE AlgorithmName = " + con.escape(PLLNames[0]);
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-    res.render("PLL", {
-      algorithmTest: result,
+  const algorithmsUsed = [];
+  for (let index = 0; index < PLLNames.length; index++) {
+    var sql = "SELECT algorithm FROM algorithms WHERE AlgorithmName = " + con.escape(PLLNames[index]);
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      algorithmsUsed.push(result)
+      if (index == 20) {
+        res.render("PLL", {
+          algorithmTest: algorithmsUsed,
+        });
+      }
     });
-    console.log("Result: " + result);
-  });
+  }
 });
 
 var http = require("http");
