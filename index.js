@@ -4,15 +4,16 @@ var path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const Cubid = require('cubid');
+const config = require('config');
 
 const PLLNames = ["Aa", "Ab", "E", "F", "Ga", "Gb", "Gc", "Gd", "H", "Ja", "Jb", "Na", "Nb", "Ra", "Rb", "T", "Ua", "Ub", "V", "Y", "Z"];
 
 var mysql = require("mysql");
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "caden",
-  password: "Passwordfordatabase",
-  database: "algs3"
+  host: config.get('db.host'),
+  user: config.get('db.user'),
+  password: config.get('db.password'),
+  database: config.get('db.database')
 });
 
 const yPerm1 = "F R U' R' U' R U R' F' R U R' U' R' F R F'"
@@ -50,6 +51,8 @@ app.get("/PLL", function(req, res) {
         res.render("PLL", {
           algorithmTest: algorithmsUsed,
         });
+      } else {
+        console.log("Error, wrong amount of algorithms pulled.")
       }
     });
   }
