@@ -8,6 +8,10 @@ const config = require('config');
 
 const PLLNames = ["Aa", "Ab", "E", "F", "Ga", "Gb", "Gc", "Gd", "H", "Ja", "Jb", "Na", "Nb", "Ra", "Rb", "T", "Ua", "Ub", "V", "Y", "Z"];
 
+function checkIfArrayIsUnique(myArray) {
+  return myArray.length === new Set(myArray).size;
+}
+
 var mysql = require("mysql");
 var con = mysql.createConnection({
   host: config.get('db.host'),
@@ -41,20 +45,41 @@ app.get("/3x3", function(req, res) {
 });
 
 app.get("/PLL", function(req, res) {
-  const algorithmsUsed = [];
+  const AlgorithmsUsed = []
   for (let index = 0; index < PLLNames.length; index++) {
-    var sql = "SELECT algorithm FROM algorithms WHERE AlgorithmName = " + con.escape(PLLNames[index]);
-    con.query(sql, function (err, result) {
+    var sql = "SELECT Votes FROM algorithms WHERE AlgorithmName = " + con.escape(PLLNames[index]);
+    let votesObtained = []
+    con.query(sql, function(err, result) {
       if (err) throw err;
-      algorithmsUsed.push(result)
+      for (let newindex = 0; newindex < result.length; newindex++) {
+        votesObtained.push(result[newindex].Votes) 
+      }
+    })
+    setTimeout(checking, 500)
+    function checking() {
+      if (checkIfArrayIsUnique(votesObtained) == true) {
+        num = Math.max.apply(Math, votesObtained)
+        var sql2 = "SELECT algorithm FROM algorithms WHERE Votes = " + con.escape(num) + " AND AlgorithmName = " + con.escape(PLLNames[index])
+        con.query(sql2, function(err, results) {
+          if (err) throw err;
+          AlgorithmsUsed.push(results)
+        })
+      } else {
+        var sqltiebreaker = "select algorithm,date(DateIssued) as date1,TimeIssued from algorithms where AlgorithmName = " + con.escape(PLLNames[index]) + " order by date(DateIssued)desc,TimeIssued desc;"
+        con.query(sqltiebreaker, function(err, results2) {
+          if (err) throw err; 
+          AlgorithmsUsed.push(results2);
+        })
+      }
+    }
+    setTimeout(running, 600)
+    function running() {
       if (index == 20) {
         res.render("PLL", {
-          algorithmTest: algorithmsUsed,
-        });
-      } else {
-        console.log("Error, wrong amount of algorithms pulled.")
+          algorithmTest: AlgorithmsUsed,
+        })
       }
-    });
+    }
   }
 });
 
