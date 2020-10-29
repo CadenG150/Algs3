@@ -28,6 +28,9 @@ const newCube = cube.apply(yPerm2);
 
 console.log(newCube.isSolved("all"));
 
+const jPerm1 = "R U R' F' R U R' U' R' F R2 U' R' U'"
+const cube1 = new Cubid(jPerm1);
+
 app.locals.testVar = "x R' U R' D2 R U' R' D2 R2";
 
 app.set("view engine", "ejs");
